@@ -11,7 +11,8 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './movie-rows.component.html',
   styleUrls: ['./movie-rows.component.css']
 })
-export class MovieRowsComponent implements OnInit {
+export class MovieRowsComponent implements OnInit
+{
   
   genres: any[] = [];
 
@@ -24,6 +25,7 @@ export class MovieRowsComponent implements OnInit {
   ngOnInit(): void {
     this.moviesService.getGenres().subscribe((response: any) => {
       this.genres = response.genres;
+      console.log(this.genres, 'debugger');
       this.fetchMoviesForAllGenres();
     });
   }
