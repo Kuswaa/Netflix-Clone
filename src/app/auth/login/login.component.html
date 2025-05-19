@@ -1,0 +1,49 @@
+<div class="header flex absolute z-50 bg-transparent w-full h-16 items-center justify-between pr-20 pl-20 pt-4 text-white">
+    <div class="w-fit cursor-pointer"><img class="w-[10 0%]" src="assets/netflix wordmark.png" alt="netflix"></div>
+</div>
+
+<div class="outermost bg-cover flex items-center justify-center h-screen"  style="background-image: url('assets/LandingPageBg.png')">
+    <div class="min-h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('/assets/images/netflix-bg.jpg')">
+        <div class="bg-black bg-opacity-75 p-8 rounded-md w-[90%] max-w-md text-white">
+            <h2 class="text-3xl font-semibold mb-6">Sign In</h2>
+
+            <input type="email"
+                placeholder="Email or mobile number"
+                class="w-full mb-4 px-4 py-3 bg-zinc-900 text-gray-600 opacity-60 border border-gray-100 rounded-md">
+
+            <input type="password"
+                placeholder="Password"
+                class="w-full mb-4 px-4 py-3 bg-zinc-900 text-gray-600 opacity-60 border border-gray-100 rounded-md">
+
+            <button  routerLink="/profiles"
+                class="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-md font-semibold mb-4">
+                Sign In
+            </button>
+
+            <div class="text-center mb-4">
+                <span class="text-gray-400">OR</span>
+            </div>
+
+            <button class="w-full bg-gray-700 text-white py-3 rounded-md font-medium mb-4">
+                Use a Sign-In Code
+            </button>
+
+            <div class="text-center mb-4">
+            <a href="#" class="text-blue-500 text-sm hover:underline">Forgot password?</a>
+            </div>
+
+            <div class="flex items-center justify-between text-md text-gray-300 mb-2">
+                <label class="inline-flex items-center space-x-2 ">
+                    <input type="checkbox" class="form-checkbox accent-white">
+                    <span>Remember me</span>
+                </label>
+            </div>
+            <div class="text-gray-400 pb-4">New to Netflix? <a href="#" class="text-white font-semibold hover:underline">Sign up now.</a></div>
+
+            <p class="text-xs text-gray-500">
+                This page is protected by Google reCAPTCHA to ensure you're not a bot.
+                <a href="#" class="text-blue-500 pt-6 hover:underline">Learn more.</a>
+            </p>
+        </div>
+    </div>
+</div>

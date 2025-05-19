@@ -1,14 +1,15 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
-import { provideHttpClient, HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
+import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
+import { routes } from './app/app.routes';
 
-// Define the app configuration
-const appConfig = {
-  providers: [
-    HttpClientModule, // Include HttpClientModule here
-    provideHttpClient(), // For standalone components in Angular 14+
+bootstrapApplication(AppComponent,
+{
+  providers:
+  [
+    provideHttpClient(),
+    provideRouter(routes),
   ]
-};
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+}).catch(err => console.error(err));

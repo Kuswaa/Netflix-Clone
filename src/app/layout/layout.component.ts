@@ -12,8 +12,5 @@ import { TopBannerComponent } from '../top-banner/top-banner.component';
 })
 export class LayoutComponent
 {
-  // constructor(){
-  //   debugger
-  //   console.log('debugger is working now')
-  // }
+
 }
