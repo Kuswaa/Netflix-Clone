@@ -31,4 +31,14 @@ export class MoviesService
   getMoviesByGenre(genreId: number) {
     return this.http.get<any>(`${this.baseUrl}/discover/movie?api_key=${this.apiKey}&with_genres=${genreId}`);
   }
+
+  getMovieDetails(movieId: number) {
+  const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${environment.tmdbApiKey}&append_to_response=release_dates`;
+  return this.http.get(apiUrl);
+  }
+
+  getMovieCredits(movieId: number) {
+    const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${environment.tmdbApiKey}`;
+    return this.http.get(apiUrl);
+  }
 }
