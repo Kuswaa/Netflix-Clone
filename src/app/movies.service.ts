@@ -41,4 +41,28 @@ export class MoviesService
     const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${environment.tmdbApiKey}`;
     return this.http.get(apiUrl);
   }
+
+  getPopularTvShows(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/tv/popular?api_key=${this.apiKey}&language=en-US&page=1`);
+  }
+
+  getTopRatedTvShows(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/tv/top_rated?api_key=${this.apiKey}&language=en-US&page=1`);
+  }
+
+  getTvGenres(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/genre/tv/list?api_key=${this.apiKey}&language=en-US`);
+  }
+
+  getTvShowsByGenre(genreId: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/discover/tv?api_key=${this.apiKey}&with_genres=${genreId}`);
+  }
+
+  getTvShowDetails(tvId: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/tv/${tvId}?api_key=${this.apiKey}&append_to_response=content_ratings`);
+  }
+
+  getTvShowCredits(tvId: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/tv/${tvId}/credits?api_key=${this.apiKey}`);
+  }
 }

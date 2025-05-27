@@ -1,0 +1,88 @@
+<div class="outermost bg-[#141414] text-white">
+    <div *ngFor="let genre of genreTvShows" class="pt-6 pb-3">
+        <div class="category-heading flex justify-between items-center px-16">
+            <div class="heading text-xl font-semibold cursor-pointer">{{ genre.genreName }}</div>
+            <div class="heading text-gray-600">==========</div>
+        </div>
+
+        <div class="movie-cards pl-12">
+            <div class="movie-card flex flex-row overflow-x-scroll no-scrollbar space-x-4 pr-4">
+                <div
+                class="card1 relative flex-shrink-0 w-[270px] transition-transform duration-200"
+                *ngFor="let tvShow of genre.tvShows"
+                (mouseenter)="openModal(tvShow, $event)"
+                (mouseleave)="startCloseTimer()">
+                <div class="img w-full h-[150px]">
+                    <img class="w-full h-full rounded-lg cursor-pointer object-cover" [src]="imageBaseUrl + tvShow.backdrop_path" alt="">
+                </div>
+
+                <div class="flex flex-col items-center justify-center text-center mt-1">
+                    <div class="title text-lg text-gray-200 truncate w-full px-2">{{ tvShow.name }}</div>
+                    <div class="text-sm text-gray-400">
+                        {{ tvShow.first_air_date | date: 'yyyy' }} • ⭐ {{ tvShow.vote_average }}
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hover Modal -->
+<div *ngIf="hoveredTVShow" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 transition-opacity duration-300"></div>
+
+<div *ngIf="hoveredTVShow"
+    class="fixed top-1/2 left-1/2 z-50 w-[50vw] h-[90vh] bg-zinc-800 -translate-x-1/2 -translate-y-1/2 text-white
+        rounded-lg shadow-2xl overflow-hidden transition-all duration-300 pointer-events-auto"
+        (mouseenter)="cancelCloseTimer()"
+        (mouseleave)="startCloseTimer()">
+
+    <img class="w-full relative object-cover" [src]="imageBaseUrl + hoveredTVShow.backdrop_path" alt="">
+    <div class="absolute inset-0 bg-opacity-30 flex flex-row items-center justify-between px-4">
+        <div class="flex flex-row items-end justify-between w-full">
+        <div class="flex flex-col gap-2">
+            <h1 class="text-3xl font-bold text-white max-w-[30vw] mb-4">{{ hoveredTVShow.name }}</h1>
+            <div class="flex items-center gap-3">
+            <button class="bg-white text-black px-5 py-1 rounded font-semibold hover:bg-gray-200 text-center flex justify-center gap-2 items-center">
+                <i class="fa fa-play text-xl" aria-hidden="true"></i>
+                <span>Play</span>
+            </button>
+            <div class="bg-zinc-800 rounded-full px-[11px] cursor-pointer p-1.5 border border-gray-500"><i class="fa fa-plus" aria-hidden="true"></i></div>
+            <div class="bg-zinc-800 rounded-full cursor-pointer px-2.5 p-1.5 border border-gray-500"><i class="fa fa-thumbs-up" aria-hidden="true"></i></div>
+            </div>
+        </div>
+        <div class="flex flex-col gap-2 h-full">
+            <div class="bg-transparent border border-gray-500 cursor-pointer rounded-full px-2.5 p-1.5">
+            <i class="fas fa-volume-mute"></i>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="lower flex flex-row items-start justify-between px-4 py-2">
+        <div class="left w-1/3">
+        <div class="tags flex flex-row items-center gap-2">
+            <div class="text-green-600 text-lg font-bold">NEW</div>
+            <div class="text-gray-500 text-lg font-bold">2024</div>
+            <div class="bg-zinc-800 text-xs p-0.5 px-1 border border-gray-600">HD</div>
+            <div class="h-[18px]">
+            <img class="h-full" src="assets/image-AD.png" alt="">
+            </div>
+        </div>
+        <div class="certifs text-sm text-gray-300 leading-relaxed">
+            Certification: <span class="text-white">{{ hoveredTVShow.certification }}</span>
+        </div>
+        <div class="info">
+            <p class="text-sm text-white-300 leading-relaxed">{{ hoveredTVShow.overview }}</p>
+        </div>
+        </div>
+        <div class="flex flex-col right w-1/3 gap-4">
+        <div class="cast text-sm text-gray-300 leading-relaxed">
+            Cast: <span class="text-white">{{ hoveredTVShow.cast }}</span>
+        </div>
+        <div class="genre text-sm text-gray-300 leading-relaxed">
+            Genre: <span class="text-white">{{ hoveredTVShow.genre }}</span>
+        </div>
+        </div>
+    </div>
+</div>
