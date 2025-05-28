@@ -8,6 +8,9 @@ import { TvShowsComponent } from './tv-shows/tv-shows.component';
 import { MovieInfoComponent } from './movie-info/movie-info.component';
 import { MovieRowsComponent } from './movie-rows/movie-rows.component';
 import { HomeComponent } from './home/home.component';
+import { NewPopularComponent } from './new-popular/new-popular.component';
+import { MyListComponent } from './my-list/my-list.component';
+import { LanguagesComponent } from './languages/languages.component';
 
 export const routes: Routes =
 [
@@ -22,10 +25,9 @@ export const routes: Routes =
         { path: '', component: HomeComponent },
         { path: 'tv-shows', component: TvShowsComponent },
         { path: 'movies', component: MovieRowsComponent },
-        { path: 'games', component: MovieInfoComponent },
-        { path: 'new-and-popular', component: MovieInfoComponent },
-        { path: 'my-list', component: MovieInfoComponent },
-        { path: 'languages', component: MovieInfoComponent },
+        { path: 'new-and-popular', component: NewPopularComponent },
+        { path: 'my-list', component: MyListComponent },
+        { path: 'languages', component: LanguagesComponent },
     ]
     },
 ];
